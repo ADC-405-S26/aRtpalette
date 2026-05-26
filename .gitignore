@@ -51,3 +51,6 @@ rsconnect/
 project.Rcheck/
 project*.tar.gz
 project*.tgz
+aRtpalette.Rcheck/
+aRtpalette*.tar.gz
+aRtpalette*.tgz

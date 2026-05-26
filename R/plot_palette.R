@@ -1,5 +1,6 @@
 #' Visualize a color palette as swatches
-#'
+#' @importFrom ggplot2 ggplot aes geom_tile geom_text scale_fill_identity labs theme_void theme element_text
+#' @importFrom rlang .data
 #' @param palette An object of class "artpalette" from the function palette_from_hex()
 #'
 #' @returns A ggplot2 object showing color swatches with hex labels

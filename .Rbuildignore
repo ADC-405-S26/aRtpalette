@@ -4,3 +4,7 @@
 ^project.*\.tar\.gz$
 ^project.*\.tgz$
 ^LICENSE\.md$
+^data-raw$
+^aRtpalette\.Rcheck$
+^aRtpalette.*\.tar\.gz$
+^aRtpalette.*\.tgz$

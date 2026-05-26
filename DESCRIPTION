@@ -12,3 +12,6 @@ Imports:
     checkmate,
     ggplot2,
     rlang
+Depends: 
+    R (>= 3.5)
+LazyData: true
