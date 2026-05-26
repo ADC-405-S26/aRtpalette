@@ -9,7 +9,7 @@ palette_from_hex(hex_codes, name = "my_palette")
 \arguments{
 \item{hex_codes}{A character vector of hex color codes.}
 
-\item{name}{A character string naming the pallete.}
+\item{name}{A character string naming the palette.}
 }
 \value{
 A list with class "artpalette" containing the name and colors

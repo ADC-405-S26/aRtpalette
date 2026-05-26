@@ -1,6 +1,6 @@
 Package: aRtpalette
 Title: Art-Inspired Color Palette Tools
-Version: 0.0.0.9000
+Version: 0.1.0
 Authors@R: 
     person("Khoi", "Nguyen", , "nguyenkh889@gmail.com", role = c("aut", "cre"))
 Description: Tools for creating, visualizing, and applying art-inspired color pallettes in R graphics.
@@ -21,3 +21,4 @@ Suggests:
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 VignetteBuilder: knitr
+URL: https://adc-405-s26.github.io/aRtpalette/

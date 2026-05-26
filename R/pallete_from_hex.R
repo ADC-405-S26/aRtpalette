@@ -1,7 +1,7 @@
 #' Create a color palette from hex codes
 #'
 #' @param hex_codes A character vector of hex color codes.
-#' @param name A character string naming the pallete.
+#' @param name A character string naming the palette.
 #'
 #' @returns
 #' A list with class "artpalette" containing the name and colors

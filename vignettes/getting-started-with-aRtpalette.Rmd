@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-The `aRtpalette` package provides convenience functions for some common tasks. To install this package from GitHub, use 
+The `aRtpalette` package provides tools for creating, visualizing, and applying art-inspired color palettes in R. It is designed to allow users to work with colors from famous artworks so they feel natural and streamlined. To install this package from GitHub, use
 
 ```{r, eval=FALSE}
 # Option 1: using devtools
@@ -216,12 +216,17 @@ ggplot(expanded_df, aes(x = x, y = 1, fill = color)) +
   theme(plot.title    = element_text(hjust = 0.5, size = 12),
         plot.subtitle = element_text(hjust = 0.5, size = 10))
 ```
+
+
 This is what "expanding on the original palette for creativity" looks like in practice: the source painting gives you the anchor colors, and `apply_palette()` handles the rest. 
 
 
 
 ## Summary
 The three functions in `aRtpalette` are designed to work as a pipeline: 
+
 1. **`palette_from_hex()`** — store hex codes from any artwork as a validated, named palette object 
+
 2. **`plot_palette()`** — preview the palette as color swatches before applying it to a chart 
+
 3. **`apply_palette()`** — extract or expand the palette to exactly the number of colors your chart needs.

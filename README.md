@@ -111,28 +111,81 @@ original color and expand it creatively for any chart size.
 
 ## A full workflow example
 
+Here we pull a palette directly from `artwork_palettes`, preview it as
+swatches, then apply it to a chart, showing all three functions working
+together in one clean pipeline.
+
 ``` r
-# Count palettes by art style using our own dataset
+# Step 1 — pull the Starry Night row from our dataset
+# and turn it into a validated palette object
+row <- artwork_palettes[artwork_palettes$palette_name == "starry_night", ]
+
+pal <- palette_from_hex(
+  c(row$hex1, row$hex2, row$hex3, row$hex4, row$hex5),
+  name = "starry_night"
+)
+
+# Step 2 — preview the palette before using it
+# so we know exactly what colors we are working with
+plot_palette(pal)
+```
+
+<img src="man/figures/README-README-step1-1.png" alt="" width="100%" />
+
+The swatch view lets us confirm the colors look right before committing
+them to a chart. This will prevent wasting time going back and forth in
+the later process.
+
+``` r
+# Step 3 — count artworks by art style from our own dataset
 style_counts <- as.data.frame(table(artwork_palettes$style))
 colnames(style_counts) <- c("style", "count")
 
-chart_colors <- apply_palette(starry_night, n = nrow(style_counts))
+# Step 4 — expand the palette to exactly the number of 
+# style groups we need using apply_palette()
+chart_colors <- apply_palette(pal, n = nrow(style_counts))
 
-ggplot(style_counts, aes(x = style, y = count, fill = style)) +
-  geom_bar(stat = "identity") +
-  scale_fill_manual(values = chart_colors, name = "Art Style") +
+# Step 5 — plug the colors directly into ggplot2
+ggplot(style_counts, aes(x = reorder(style, count),
+                          y = count,
+                          fill = style)) +
+  geom_bar(stat = "identity", width = 0.7) +
+  scale_fill_manual(values = chart_colors) +
+  coord_flip() +
   labs(
-    title    = "Number of Palettes by Art Style in artwork_palettes",
+    title    = "Number of Artworks by Art Style",
     subtitle = "Colors from Van Gogh's The Starry Night",
     x        = "Art Style",
     y        = "Count"
   ) +
   theme_classic() +
-  theme(axis.text.x = element_text(angle = 30, hjust = 1))
+  theme(legend.position = "none")
 ```
 
-<img src="man/figures/README-unnamed-chunk-6-1.png" alt="" width="100%" />
-\## Learn more
+<img src="man/figures/README-README-step2-1.png" alt="" width="100%" />
+The palette came from `artwork_palettes`, was previewed with
+`plot_palette()`, expanded to fit the number of style groups with
+`apply_palette()`, and applied directly to the chart. No hex codes were
+typed by hand.
+
+\#Summary
+
+`aRtpalette` provides three functions that work together as a pipeline :
+
+1.**`palette_from_hex()`** — store hex codes from any artwork as a
+validated, named palette object
+
+2.**`plot_palette()`** — preview the palette as color swatches before
+applying it to a chart
+
+3.**`apply_palette()`** — extract or expand the palette to exactly the
+number of colors your chart needs.
+
+Combined with the built-in `artwork_palettes` dataset of 20 palettes
+from iconic artworks, the package makes it easy to bring art history
+into R without any manual hex code lookup.
+
+## Learn more
 
 See the full vignette for a detailed walkthrough including palette
 comparison across art movements, the complete art analysis workflow, and
