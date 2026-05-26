@@ -10,3 +10,7 @@
 ^aRtpalette.*\.tgz$
 ^doc$
 ^Meta$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^README\.Rmd$
