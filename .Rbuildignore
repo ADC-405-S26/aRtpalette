@@ -8,3 +8,5 @@
 ^aRtpalette\.Rcheck$
 ^aRtpalette.*\.tar\.gz$
 ^aRtpalette.*\.tgz$
+^doc$
+^Meta$

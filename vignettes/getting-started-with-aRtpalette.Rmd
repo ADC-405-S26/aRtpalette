@@ -1,8 +1,8 @@
 ---
-title: "getting-started-with-aRtpalette"
+title: "Introduction to aRtpalette package"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{getting-started-with-aRtpalette}
+  %\VignetteIndexEntry{Introduction to aRtpalette package}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -14,6 +14,23 @@ knitr::opts_chunk$set(
 )
 ```
 
+The `aRtpalette` package provides convenience functions for some common tasks. To install this package from GitHub, use 
+
+```{r, eval=FALSE}
+# install.packages("remotes")
+# install.packages("devtools")
+devtools::install_github("aRtpalette")
+```
+
+Load the package using the following code.
+
 ```{r setup}
 library(aRtpalette)
 ```
+
+The package contains three functions
+
+* `palette_from_hex`
+
+* `plot_palette`
+* `apply_palette`

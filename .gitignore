@@ -55,3 +55,5 @@ aRtpalette.Rcheck/
 aRtpalette*.tar.gz
 aRtpalette*.tgz
 inst/doc
+/doc/
+/Meta/
