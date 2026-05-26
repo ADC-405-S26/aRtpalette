@@ -1,0 +1,10 @@
+Package: aRtpalette
+Title: Art-Inspired Color Palette Tools
+Version: 0.0.0.9000
+Authors@R: 
+    person("Khoi", "Nguyen", , "nguyenkh889@gmail.com", role = c("aut", "cre"))
+Description: Tools for creating, visualizing, and applying art-inspired color pallettes in R graphics.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 8.0.0
