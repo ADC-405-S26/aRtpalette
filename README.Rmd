@@ -103,6 +103,7 @@ ggplot(style_counts, aes(x = style, y = count, fill = style)) +
   theme_classic() +
   theme(axis.text.x = element_text(angle = 30, hjust = 1))
 ```
+
 ## Learn more
 
 See the full vignette for a detailed walkthrough including palette

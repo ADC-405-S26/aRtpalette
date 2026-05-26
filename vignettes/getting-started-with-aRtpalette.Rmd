@@ -222,6 +222,9 @@ This is what "expanding on the original palette for creativity" looks like in pr
 
 ## Summary
 The three functions in `aRtpalette` are designed to work as a pipeline: 
+
 1. **`palette_from_hex()`** — store hex codes from any artwork as a validated, named palette object 
+
 2. **`plot_palette()`** — preview the palette as color swatches before applying it to a chart 
+
 3. **`apply_palette()`** — extract or expand the palette to exactly the number of colors your chart needs.

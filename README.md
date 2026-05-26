@@ -132,7 +132,8 @@ ggplot(style_counts, aes(x = style, y = count, fill = style)) +
 ```
 
 <img src="man/figures/README-unnamed-chunk-6-1.png" alt="" width="100%" />
-\## Learn more
+
+## Learn more
 
 See the full vignette for a detailed walkthrough including palette
 comparison across art movements, the complete art analysis workflow, and
