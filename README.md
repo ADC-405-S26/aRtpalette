@@ -171,7 +171,7 @@ typed by hand.
 
 ## Summary
 
-`aRtpalette` provides three functions that work together as a pipeline :
+`aRtpalette` provides three functions that work together as a pipeline:
 
 1.**`palette_from_hex()`** — store hex codes from any artwork as a
 validated, named palette object

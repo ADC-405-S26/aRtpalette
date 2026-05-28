@@ -3,7 +3,7 @@ Title: Art-Inspired Color Palette Tools
 Version: 0.1.0
 Authors@R: 
     person("Khoi", "Nguyen", , "nguyenkh889@gmail.com", role = c("aut", "cre"))
-Description: Tools for creating, visualizing, and applying art-inspired color pallettes in R graphics.
+Description: Tools for creating, visualizing, and applying art-inspired color palettes in R graphics.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
