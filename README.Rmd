@@ -130,6 +130,7 @@ ggplot(style_counts, aes(x = reorder(style, count),
   theme_classic() +
   theme(legend.position = "none")
 ```
+
 The palette came from `artwork_palettes`, was previewed with `plot_palette()`, expanded to fit the number of style groups with `apply_palette()`, and applied directly to the chart. No hex codes were typed by hand.
 
 #Summary

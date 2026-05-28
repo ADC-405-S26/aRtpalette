@@ -162,6 +162,7 @@ ggplot(style_counts, aes(x = reorder(style, count),
   theme(legend.position = "none")
 ```
 
+
 <img src="man/figures/README-README-step2-1.png" alt="" width="100%" />
 The palette came from `artwork_palettes`, was previewed with
 `plot_palette()`, expanded to fit the number of style groups with
@@ -184,6 +185,9 @@ number of colors your chart needs.
 Combined with the built-in `artwork_palettes` dataset of 20 palettes
 from iconic artworks, the package makes it easy to bring art history
 into R without any manual hex code lookup.
+
+<img src="man/figures/README-unnamed-chunk-6-1.png" alt="" width="100%" />
+
 
 ## Learn more
 
