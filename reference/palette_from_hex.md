@@ -16,7 +16,7 @@ palette_from_hex(hex_codes, name = "my_palette")
 
 - name:
 
-  A character string naming the pallete.
+  A character string naming the palette.
 
 ## Value
 

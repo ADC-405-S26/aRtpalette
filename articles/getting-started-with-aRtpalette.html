@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">aRtpalette</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,8 +63,11 @@
 
     
     
-<p>The <code>aRtpalette</code> package provides convenience functions
-for some common tasks. To install this package from GitHub, use</p>
+<p>The <code>aRtpalette</code> package provides tools for creating,
+visualizing, and applying art-inspired color palettes in R. It is
+designed to allow users to work with colors from famous artworks so they
+feel natural and streamlined. To install this package from GitHub,
+use</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Option 1: using devtools</span></span>
 <span><span class="co"># install.packages("devtools")</span></span>
@@ -322,8 +325,8 @@ the original colors while staying true to the painting’s spirit.</p>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_void</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>plot.title    <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span>, size <span class="op">=</span> <span class="fl">12</span><span class="op">)</span>,</span>
 <span>        plot.subtitle <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span>, size <span class="op">=</span> <span class="fl">10</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="getting-started-with-aRtpalette_files/figure-html/unnamed-chunk-15-1.png" class="r-plt" alt="" width="672">
-This is what “expanding on the original palette for creativity” looks
+<p><img src="getting-started-with-aRtpalette_files/figure-html/unnamed-chunk-15-1.png" class="r-plt" alt="" width="672"></p>
+<p>This is what “expanding on the original palette for creativity” looks
 like in practice: the source painting gives you the anchor colors, and
 <code><a href="../reference/apply_palette.html">apply_palette()</a></code> handles the rest.</p>
 </div>

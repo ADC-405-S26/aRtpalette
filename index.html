@@ -22,7 +22,7 @@
 
     <a class="navbar-brand me-2" href="index.html">aRtpalette</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -139,31 +139,60 @@
 <div class="section level2">
 <h2 id="a-full-workflow-example">A full workflow example<a class="anchor" aria-label="anchor" href="#a-full-workflow-example"></a>
 </h2>
+<p>Here we pull a palette directly from <code>artwork_palettes</code>, preview it as swatches, then apply it to a chart, showing all three functions working together in one clean pipeline.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Count palettes by art style using our own dataset</span></span>
+<code class="sourceCode R"><span><span class="co"># Step 1 — pull the Starry Night row from our dataset</span></span>
+<span><span class="co"># and turn it into a validated palette object</span></span>
+<span><span class="va">row</span> <span class="op">&lt;-</span> <span class="va">artwork_palettes</span><span class="op">[</span><span class="va">artwork_palettes</span><span class="op">$</span><span class="va">palette_name</span> <span class="op">==</span> <span class="st">"starry_night"</span>, <span class="op">]</span></span>
+<span></span>
+<span><span class="va">pal</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/palette_from_hex.html">palette_from_hex</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">row</span><span class="op">$</span><span class="va">hex1</span>, <span class="va">row</span><span class="op">$</span><span class="va">hex2</span>, <span class="va">row</span><span class="op">$</span><span class="va">hex3</span>, <span class="va">row</span><span class="op">$</span><span class="va">hex4</span>, <span class="va">row</span><span class="op">$</span><span class="va">hex5</span><span class="op">)</span>,</span>
+<span>  name <span class="op">=</span> <span class="st">"starry_night"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Step 2 — preview the palette before using it</span></span>
+<span><span class="co"># so we know exactly what colors we are working with</span></span>
+<span><span class="fu"><a href="reference/plot_palette.html">plot_palette</a></span><span class="op">(</span><span class="va">pal</span><span class="op">)</span></span></code></pre></div>
+<p><img src="reference/figures/README-README-step1-1.png" alt="" width="100%"></p>
+<p>The swatch view lets us confirm the colors look right before committing them to a chart. This will prevent wasting time going back and forth in the later process.</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Step 3 — count artworks by art style from our own dataset</span></span>
 <span><span class="va">style_counts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">artwork_palettes</span><span class="op">$</span><span class="va">style</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">style_counts</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"style"</span>, <span class="st">"count"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">chart_colors</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/apply_palette.html">apply_palette</a></span><span class="op">(</span><span class="va">starry_night</span>, n <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">style_counts</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co"># Step 4 — expand the palette to exactly the number of </span></span>
+<span><span class="co"># style groups we need using apply_palette()</span></span>
+<span><span class="va">chart_colors</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/apply_palette.html">apply_palette</a></span><span class="op">(</span><span class="va">pal</span>, n <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">style_counts</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">style_counts</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">style</span>, y <span class="op">=</span> <span class="va">count</span>, fill <span class="op">=</span> <span class="va">style</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_bar</a></span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"identity"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" class="external-link">scale_fill_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="va">chart_colors</span>, name <span class="op">=</span> <span class="st">"Art Style"</span><span class="op">)</span> <span class="op">+</span></span>
+<span><span class="co"># Step 5 — plug the colors directly into ggplot2</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">style_counts</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/reorder.factor.html" class="external-link">reorder</a></span><span class="op">(</span><span class="va">style</span>, <span class="va">count</span><span class="op">)</span>,</span>
+<span>                          y <span class="op">=</span> <span class="va">count</span>,</span>
+<span>                          fill <span class="op">=</span> <span class="va">style</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_bar</a></span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"identity"</span>, width <span class="op">=</span> <span class="fl">0.7</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" class="external-link">scale_fill_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="va">chart_colors</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html" class="external-link">coord_flip</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span>
-<span>    title    <span class="op">=</span> <span class="st">"Number of Palettes by Art Style in artwork_palettes"</span>,</span>
+<span>    title    <span class="op">=</span> <span class="st">"Number of Artworks by Art Style"</span>,</span>
 <span>    subtitle <span class="op">=</span> <span class="st">"Colors from Van Gogh's The Starry Night"</span>,</span>
 <span>    x        <span class="op">=</span> <span class="st">"Art Style"</span>,</span>
 <span>    y        <span class="op">=</span> <span class="st">"Count"</span></span>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_classic</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">30</span>, hjust <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span></code></pre></div>
+<p><img src="reference/figures/README-README-step2-1.png" alt="" width="100%"> The palette came from <code>artwork_palettes</code>, was previewed with <code><a href="reference/plot_palette.html">plot_palette()</a></code>, expanded to fit the number of style groups with <code><a href="reference/apply_palette.html">apply_palette()</a></code>, and applied directly to the chart. No hex codes were typed by hand.</p>
+<p>#Summary</p>
+<p><code>aRtpalette</code> provides three functions that work together as a pipeline :</p>
+<p>1.<strong><code><a href="reference/palette_from_hex.html">palette_from_hex()</a></code></strong> — store hex codes from any artwork as a validated, named palette object</p>
+<p>2.<strong><code><a href="reference/plot_palette.html">plot_palette()</a></code></strong> — preview the palette as color swatches before applying it to a chart</p>
+<p>3.<strong><code><a href="reference/apply_palette.html">apply_palette()</a></code></strong> — extract or expand the palette to exactly the number of colors your chart needs.</p>
+<p>Combined with the built-in <code>artwork_palettes</code> dataset of 20 palettes from iconic artworks, the package makes it easy to bring art history into R without any manual hex code lookup.</p>
 <p><img src="reference/figures/README-unnamed-chunk-6-1.png" alt="" width="100%"></p>
 </div>
 <div class="section level2">
 <h2 id="learn-more">Learn more<a class="anchor" aria-label="anchor" href="#learn-more"></a>
 </h2>
 <p>See the full vignette for a detailed walkthrough including palette comparison across art movements, the complete art analysis workflow, and more ggplot2 examples:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/vignette.html" class="external-link">vignette</a></span><span class="op">(</span><span class="st">"getting-started-with-aRtpalette"</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>

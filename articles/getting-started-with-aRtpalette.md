@@ -1,7 +1,9 @@
 # Introduction to aRtpalette package
 
-The `aRtpalette` package provides convenience functions for some common
-tasks. To install this package from GitHub, use
+The `aRtpalette` package provides tools for creating, visualizing, and
+applying art-inspired color palettes in R. It is designed to allow users
+to work with colors from famous artworks so they feel natural and
+streamlined. To install this package from GitHub, use
 
 ``` r
 
@@ -316,6 +318,7 @@ ggplot(expanded_df, aes(x = x, y = 1, fill = color)) +
 ```
 
 ![](getting-started-with-aRtpalette_files/figure-html/unnamed-chunk-15-1.png)
+
 This is what “expanding on the original palette for creativity” looks
 like in practice: the source painting gives you the anchor colors, and
 [`apply_palette()`](https://adc-405-s26.github.io/aRtpalette/reference/apply_palette.md)
