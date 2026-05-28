@@ -18,7 +18,7 @@ validate, visualize, and manipulate programmatically.
 
 ## Installation
 
-You can install the development version of `artpalette` from
+You can install the development version of `aRtpalette` from
 [GitHub](https://github.com/) with:
 
 ``` r

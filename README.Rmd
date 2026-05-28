@@ -21,7 +21,7 @@ The inspiration for this package came from the frustration of having to use the 
 
 ## Installation
 
-You can install the development version of `artpalette` from
+You can install the development version of `aRtpalette` from
 [GitHub](https://github.com/) with:
 
 ``` r
