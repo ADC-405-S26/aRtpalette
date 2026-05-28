@@ -177,7 +177,7 @@ and applied directly to the chart. No hex codes were typed by hand.
 
 ## Summary
 
-`aRtpalette` provides three functions that work together as a pipeline :
+`aRtpalette` provides three functions that work together as a pipeline:
 
 1.**[`palette_from_hex()`](https://adc-405-s26.github.io/aRtpalette/reference/palette_from_hex.md)**
 — store hex codes from any artwork as a validated, named palette object
