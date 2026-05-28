@@ -167,14 +167,15 @@ ggplot(style_counts, aes(x = reorder(style, count),
   theme(legend.position = "none")
 ```
 
-![](reference/figures/README-README-step2-1.png) The palette came from
-`artwork_palettes`, was previewed with
+![](reference/figures/README-README-step2-1.png)
+
+The palette came from `artwork_palettes`, was previewed with
 [`plot_palette()`](https://adc-405-s26.github.io/aRtpalette/reference/plot_palette.md),
 expanded to fit the number of style groups with
 [`apply_palette()`](https://adc-405-s26.github.io/aRtpalette/reference/apply_palette.md),
 and applied directly to the chart. No hex codes were typed by hand.
 
-\#Summary
+## Summary
 
 `aRtpalette` provides three functions that work together as a pipeline :
 
@@ -191,8 +192,6 @@ chart needs.
 Combined with the built-in `artwork_palettes` dataset of 20 palettes
 from iconic artworks, the package makes it easy to bring art history
 into R without any manual hex code lookup.
-
-![](reference/figures/README-unnamed-chunk-6-1.png)
 
 ## Learn more
 
